@@ -11,7 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "autoprefixer": "^10.4.7",
-    "axios": "^1.12.2",
+    "formidable": "^3.5.4",
     "gray-matter": "^4.0.3",
     "gsap": "^3.10.4",
     "next": "^12.1.6",

@@ -1,37 +1,35 @@
 import React from "react";
-import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
 
-const Button = ({ children, type, onClick, classes }) => {
-  const { theme } = useTheme();
+const Button = ({ children, type, onClick, classes, icon }) => {
+  const base =
+    "text-sm tablet:text-base px-6 py-2 m-1 laptop:m-2 rounded-full transition-all duration-300 ease-out link";
+
   if (type === "primary") {
     return (
       <button
         onClick={onClick}
         type="button"
-        className={`text-sm tablet:text-base p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg ${
-          theme === "dark" ? "bg-white text-black" : "bg-black text-white"
-        }  transition-all duration-300 ease-out first:ml-0 hover:scale-105 active:scale-100 link ${
+        className={`${base} font-semibold bg-[#0B5CF5] text-white shadow-md shadow-blue-500/30 hover:scale-105 active:scale-100 ${
           data.showCursor && "cursor-none"
-        }  ${classes}`}
+        } ${classes}`}
       >
-        {children}
+        {icon && <span className="mr-2 text-lg">{icon}</span>}
+        <span>{children}</span>
       </button>
     );
   }
+
   return (
     <button
       onClick={onClick}
       type="button"
-      className={`text-sm tablet:text-base p-1 laptop:p-2 m-1 laptop:m-2 rounded-lg flex items-center transition-all ease-out duration-300 ${
-        theme === "dark"
-          ? "hover:bg-slate-600 text-white"
-          : "hover:bg-slate-100"
-      } hover:scale-105 active:scale-100  tablet:first:ml-0  ${
+      className={`${base} flex items-center bg-white text-slate-900 border border-slate-200 hover:border-blue-400 hover:text-blue-600 hover:shadow-md active:scale-100 ${
         data.showCursor && "cursor-none"
-      } ${classes} link`}
+      } ${classes}`}
     >
-      {children}
+      {icon && <span className="mr-2 text-lg">{icon}</span>}
+      <span>{children}</span>
     </button>
   );
 };

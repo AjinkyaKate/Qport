@@ -1,140 +1,435 @@
-import { useRef } from "react";
-import { useRouter } from "next/router";
-import Header from "../components/Header";
-import ServiceCard from "../components/ServiceCard";
-import Socials from "../components/Socials";
-import WorkCard from "../components/WorkCard";
-import { useIsomorphicLayoutEffect } from "../utils";
-import { stagger } from "../animations";
-import Footer from "../components/Footer";
 import Head from "next/head";
-import Button from "../components/Button";
-import Link from "next/link";
+import Image from "next/image";
 import Cursor from "../components/Cursor";
-
-// Local Data
+import Header from "../components/Header";
+import Button from "../components/Button";
+import Footer from "../components/Footer";
 import data from "../data/portfolio.json";
 
-export default function Home() {
-  // Ref
-  const workRef = useRef();
-  const aboutRef = useRef();
-  const textOne = useRef();
-  const textTwo = useRef();
-  const textThree = useRef();
-  const textFour = useRef();
-  const router = useRouter();
+const steps = [
+  {
+    title: "Start Route Recording",
+    description:
+      "Initialize recording mode and begin capturing your heavy cargo route with GPS precision.",
+    bullets: [
+      "One-tap route recording",
+      "GPS precision initialization",
+      "Heavy cargo route setup",
+    ],
+    imageAlt: "Quick Port app ready to start route recording",
+  },
+  {
+    title: "Trace Drive the Route",
+    description:
+      "Drive the actual route while the app records every turn, elevation, and critical waypoint.",
+    bullets: [
+      "Real-time GPS tracking",
+      "Automatic waypoint capture",
+      "Live route visualization",
+    ],
+    imageAlt: "Live route tracking while driving",
+  },
+  {
+    title: "Save the Route",
+    description:
+      "Complete recording and save the route to your library for future heavy cargo deliveries.",
+    bullets: [
+      "Route completion confirmation",
+      "Automatic route library storage",
+      "Route metadata tagging",
+    ],
+    imageAlt: "Save completed route recording",
+  },
+];
 
-  // Handling Scroll
-  const handleWorkScroll = () => {
-    window.scrollTo({
-      top: workRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+const followFeatures = [
+  {
+    title: "Select from route library",
+    description:
+      "Browse your team's proven routes with detailed metadata and selection filters.",
+  },
+  {
+    title: "Get route details and metrics",
+    description:
+      "Review distance, time, difficulty level, and cargo specifications before departure.",
+  },
+  {
+    title: "Start following turn-by-turn",
+    description:
+      "Navigate with confidence using visual guidance optimized for heavy cargo routes.",
+  },
+];
 
-  const handleAboutScroll = () => {
-    window.scrollTo({
-      top: aboutRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
+const advantages = [
+  {
+    title: "GPS Precision Tracking",
+    description:
+      "Record routes with centimeter-level accuracy for heavy cargo navigation confidence.",
+    tag: "Centimeter accuracy",
+  },
+  {
+    title: "Route Intelligence Library",
+    description:
+      "Build a searchable database of proven heavy cargo routes with detailed metadata.",
+    tag: "Proven route database",
+  },
+  {
+    title: "Offline Navigation",
+    description:
+      "Navigate recorded routes even without cellular coverage in remote locations.",
+    tag: "Works without signal",
+  },
+  {
+    title: "Heavy Cargo Optimized",
+    description:
+      "Purpose-built for oversized loads with clearance and weight considerations.",
+    tag: "Built for heavy cargo",
+  },
+];
 
-  useIsomorphicLayoutEffect(() => {
-    stagger(
-      [textOne.current, textTwo.current, textThree.current, textFour.current],
-      { y: 40, x: -10, transform: "scale(0.95) skew(10deg)" },
-      { y: 0, x: 0, transform: "scale(1)" }
-    );
-  }, []);
+const industries = [
+  {
+    title: "Mining Operations",
+    subtitle: "Heavy Equipment to Remote Sites",
+    description:
+      "Navigate oversized mining equipment safely to extraction sites with proven route intelligence.",
+    stats: ["40+ ton loads", "Equipment transported safely"],
+  },
+  {
+    title: "Construction Projects",
+    subtitle: "Crane & Excavator Delivery",
+    description:
+      "Transport construction machinery to job sites using validated heavy cargo routes.",
+    stats: ["99% success rate", "On-time deliveries"],
+  },
+  {
+    title: "Energy & Utilities",
+    subtitle: "Turbine Component Transport",
+    description:
+      "Deliver wind turbines and heavy infrastructure to renewable energy sites.",
+    stats: ["500+ routes", "Proven energy site access"],
+  },
+  {
+    title: "Oil & Gas",
+    subtitle: "Drilling Equipment Routes",
+    description:
+      "Safe transport of heavy drilling equipment to remote oil and gas locations.",
+    stats: ["Remote access", "Previously unreachable sites"],
+  },
+];
+
+const mobileScreens = [
+  {
+    title: "Route Recording",
+    description:
+      "Start a new heavy cargo route with one tap and capture GPS-precise paths instantly.",
+    tag: "Record",
+    image:
+      "https://images.unsplash.com/photo-1523473827534-86c16fda8e20?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Route recording mobile screen",
+  },
+  {
+    title: "Live Tracking",
+    description:
+      "Monitor every turn, incline, and waypoint while your team drives the route in real time.",
+    tag: "Track",
+    image:
+      "https://images.unsplash.com/photo-1512427691650-1e0c6d2d6b58?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Live tracking mobile screen",
+  },
+  {
+    title: "Route Library",
+    description:
+      "Review saved routes with cargo specs, difficulty ratings, and clearance notes before deployment.",
+    tag: "Review",
+    image:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80",
+    imageAlt: "Route library mobile screen",
+  },
+];
+
+const Home = () => {
+  const storyVideoUrl = "https://www.youtube.com/embed/0hTGHbWUXuk";
 
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
-      {data.showCursor && <Cursor />}
       <Head>
-        <title>{data.name}</title>
+        <title>Quick Port | Heavy Cargo Route Intelligence</title>
+        <meta
+          name="description"
+          content="Automate heavy cargo logistics with intelligent route recording, proven route libraries, and turn-by-turn guidance."
+        />
       </Head>
-
+      {data.showCursor && <Cursor />}
       <div className="gradient-circle"></div>
       <div className="gradient-circle-bottom"></div>
 
-      <div className="container mx-auto mb-10">
-        <Header
-          handleWorkScroll={handleWorkScroll}
-          handleAboutScroll={handleAboutScroll}
-        />
-        <div className="laptop:mt-20 mt-10">
-          <div className="mt-5">
-            <h1
-              ref={textOne}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-4/5 mob:w-full laptop:w-4/5"
-            >
-              {data.headerTaglineOne}
+      <div className="container mx-auto px-4">
+        <Header />
+
+        {/* Hero */}
+        <section className="mt-16 grid gap-16 laptop:grid-cols-12 laptop:items-center">
+          <div className="space-y-6 laptop:col-span-6">
+            <span className="inline-flex items-center rounded-full border border-slate-300 px-4 py-1 text-xs uppercase tracking-widest opacity-70">
+              Automate Heavy Cargo
+            </span>
+            <h1 className="text-4xl font-bold tablet:text-5xl laptop:text-6xl">
+              Automate Heavy Cargo, Unlock Route Intelligence
             </h1>
-            <h1
-              ref={textTwo}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineTwo}
-            </h1>
-            <h1
-              ref={textThree}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineThree}
-            </h1>
-            <h1
-              ref={textFour}
-              className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl p-1 tablet:p-2 text-bold w-full laptop:w-4/5"
-            >
-              {data.headerTaglineFour}
-            </h1>
+            <p className="max-w-xl text-lg opacity-80">
+              Intelligent route recording and following that streamlines your heavy cargo logistics — record proven paths, eliminate route failures, and achieve operational excellence.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Button type="primary">Book a Demo Now</Button>
+              <Button onClick={() => document.querySelector("#how-it-works")?.scrollIntoView({ behavior: "smooth" })}>
+                Learn More
+              </Button>
+            </div>
           </div>
+          <div className="laptop:col-span-6">
+            <div className="flex justify-center">
+              <div className="w-full max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 shadow-lg">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-lg font-semibold">What We Solve</h3>
+                    <p className="text-sm opacity-70">
+                      See how Quick Port removes guesswork from heavy cargo logistics with reliable route intelligence.
+                    </p>
+                  </div>
+                  <Button onClick={() => window.open(storyVideoUrl, "_blank")}>
+                    Watch Our Story
+                  </Button>
+                </div>
+                <div className="mt-4 aspect-video w-full overflow-hidden rounded-2xl">
+                  <iframe
+                    src={storyVideoUrl}
+                    title="Quick Port story video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full rounded-2xl border-0"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <Socials className="mt-2 laptop:mt-5" />
-        </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={workRef}>
-          <h1 className="text-2xl text-bold">Work.</h1>
-
-          <div className="mt-5 laptop:mt-10 grid grid-cols-1 tablet:grid-cols-2 gap-4">
-            {data.projects.map((project) => (
-              <WorkCard
-                key={project.id}
-                img={project.imageSrc}
-                name={project.title}
-                description={project.description}
-                onClick={() =>
-                  project.slug
-                    ? router.push(`/projects/${project.slug}`)
-                    : window.open(project.url)
-                }
-              />
+        {/* Mobile Demo Screens */}
+        <section id="mobile" className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">Mobile Demo Screens</h2>
+            <p className="mt-3 opacity-70">
+              Visualize the Quick Port mobile experience that keeps heavy cargo missions on track.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 laptop:grid-cols-3">
+            {mobileScreens.map((screen) => (
+              <div
+                key={screen.title}
+                className="flex flex-col items-center rounded-3xl border border-slate-200 bg-white p-6 shadow-lg"
+              >
+                <span className="text-xs uppercase tracking-widest text-[#0B5CF5]">
+                  {screen.tag}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold text-slate-900">
+                  {screen.title}
+                </h3>
+                <div className="mt-6 w-full flex justify-center">
+                  <div className="phone-screenshot">
+                    {screen.image ? (
+                      <Image
+                        src={screen.image}
+                        alt={screen.imageAlt || `${screen.title} mobile screen`}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    ) : (
+                      <div className="phone-screenshot__placeholder">
+                        Add your mobile screen image
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <p className="mt-4 text-center text-sm opacity-80">
+                  {screen.description}
+                </p>
+              </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0">
-          <h1 className="tablet:m-10 text-2xl text-bold">Services.</h1>
-          <div className="mt-5 tablet:m-10 grid grid-cols-1 laptop:grid-cols-2 gap-6">
-            {data.services.map((service, index) => (
-              <ServiceCard
-                key={index}
-                name={service.title}
-                description={service.description}
-              />
+        {/* How it works */}
+        <section id="how-it-works" className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">How Quick Port Works</h2>
+            <p className="mt-3 opacity-70">
+              Streamlined heavy cargo route intelligence in three simple steps.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 laptop:grid-cols-3">
+            {steps.map((step, index) => (
+              <div
+                key={step.title}
+                className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm"
+              >
+                <span className="text-sm font-semibold opacity-60">Step {index + 1}</span>
+                <h3 className="mt-3 text-xl font-semibold">{step.title}</h3>
+                <p className="mt-2 text-sm opacity-80">{step.description}</p>
+                <div className="mt-4 h-40 rounded-lg bg-gradient-to-br from-slate-200 to-slate-100" aria-label={step.imageAlt}></div>
+                <ul className="mt-4 space-y-1 text-sm opacity-80">
+                  {step.bullets.map((bullet) => (
+                    <li key={bullet}>• {bullet}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
-        </div>
-        <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
-          <h1 className="tablet:m-10 text-2xl text-bold">About.</h1>
-          <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-            {data.aboutpara}
-          </p>
-        </div>
+        </section>
+
+        {/* Follow recorded routes */}
+        <section id="features" className="mt-24 grid gap-10 laptop:grid-cols-2 laptop:items-center">
+          <div className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm">
+            <h3 className="text-2xl font-semibold">Follow Recorded Routes</h3>
+            <p className="mt-3 text-sm opacity-80">
+              Navigate heavy cargo using proven routes with turn-by-turn guidance and route intelligence.
+            </p>
+            <div className="mt-6 h-64 rounded-xl bg-gradient-to-br from-slate-200 to-slate-100" aria-label="Follow recorded routes"></div>
+          </div>
+          <div className="space-y-6">
+            {followFeatures.map((feature) => (
+              <div key={feature.title} className="rounded-xl border border-slate-200 p-5">
+                <h4 className="text-lg font-semibold">{feature.title}</h4>
+                <p className="mt-2 text-sm opacity-80">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Why Quick Port */}
+        <section id="why" className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">Why Quick Port?</h2>
+            <p className="mt-3 opacity-70">
+              Purpose-built features that eliminate route uncertainty for heavy cargo logistics.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 laptop:grid-cols-2">
+            {advantages.map((advantage) => (
+              <div
+                key={advantage.title}
+                className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm"
+              >
+                <span className="text-xs uppercase tracking-widest opacity-60">
+                  {advantage.tag}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold">{advantage.title}</h3>
+                <p className="mt-2 text-sm opacity-80">{advantage.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Industries */}
+        <section id="industries" className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">Built for Every Heavy Cargo Challenge</h2>
+            <p className="mt-3 opacity-70">
+              Specialized solutions for industries that move the world&rsquo;s heaviest cargo.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-8 laptop:grid-cols-2">
+            {industries.map((industry) => (
+              <div
+                key={industry.title}
+                className="rounded-2xl border border-slate-200 bg-white/70 p-6 shadow-sm"
+              >
+                <h3 className="text-xl font-semibold">{industry.title}</h3>
+                <p className="text-sm font-medium opacity-70">{industry.subtitle}</p>
+                <p className="mt-3 text-sm opacity-80">{industry.description}</p>
+                <div className="mt-4 flex flex-wrap gap-3 text-xs uppercase tracking-widest opacity-60">
+                  {industry.stats.map((stat) => (
+                    <span key={stat} className="rounded-full border border-slate-300 px-3 py-1">
+                      {stat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="mt-24 rounded-3xl bg-gradient-to-br from-blue-600 to-indigo-600 p-10 text-white">
+          <div className="grid gap-8 laptop:grid-cols-2 laptop:items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-semibold">
+                Ready to Modernize Your Heavy Cargo Logistics?
+              </h2>
+              <p className="text-sm opacity-80">
+                Join industry leaders safely navigating oversized loads to remote destinations with proven route intelligence.
+              </p>
+              <ul className="space-y-2 text-sm opacity-80">
+                <li>• Custom solution</li>
+                <li>• Industry expertise</li>
+                <li>• Proven results</li>
+              </ul>
+            </div>
+            <div className="rounded-2xl bg-white/10 p-6 backdrop-blur">
+              <h3 className="text-xl font-semibold">Book Your Demo</h3>
+              <p className="mt-2 text-sm opacity-80">
+                Get personalized route intelligence for your heavy cargo operations.
+              </p>
+              <form className="mt-4 space-y-4">
+                <div>
+                  <label className="text-xs uppercase tracking-widest opacity-70">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter your full name"
+                    className="mt-1 w-full rounded-md border border-white/40 bg-transparent p-2 text-sm focus:border-white focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs uppercase tracking-widest opacity-70">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email address"
+                    className="mt-1 w-full rounded-md border border-white/40 bg-transparent p-2 text-sm focus:border-white focus:outline-none"
+                  />
+                </div>
+                <div className="flex justify-end gap-3 text-sm">
+                  <Button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.currentTarget.closest("form")?.reset();
+                    }}
+                  >
+                    Reset
+                  </Button>
+                  <Button
+                    type="primary"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.open("mailto:hello@quickport.app", "_blank");
+                    }}
+                  >
+                    Submit Request
+                  </Button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <Footer />
       </div>
     </div>
   );
-}
+};
+
+export default Home;

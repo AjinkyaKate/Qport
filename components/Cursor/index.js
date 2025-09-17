@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
 
 const Cursor = () => {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const innerRef = useRef(null);
   const outerRef = useRef(null);
@@ -84,10 +82,9 @@ const Cursor = () => {
       return;
     }
 
-    const color = theme === "dark" ? "#fff" : "#000";
-    inner.style.backgroundColor = color;
-    outer.style.borderColor = color;
-  }, [theme, mounted]);
+    inner.style.backgroundColor = "#0B5CF5";
+    outer.style.borderColor = "#0B5CF5";
+  }, [mounted]);
 
   if (!mounted) {
     return null;

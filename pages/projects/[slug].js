@@ -1,10 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 import Cursor from "../../components/Cursor";
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import data from "../../data/portfolio.json";
+
+const fallbackImage =
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80";
 
 const ProjectDetail = ({ project }) => {
   const pageTitle = `${project.title} — ${data.name}`;
@@ -38,12 +42,16 @@ const ProjectDetail = ({ project }) => {
             </div>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700">
-            <img
-              src={project.imageSrc}
-              alt={`${project.title} preview`}
-              className="h-full w-full object-cover"
-            />
+          <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200">
+            <div className="relative h-[420px] w-full">
+              <Image
+                src={project.imageSrc || fallbackImage}
+                alt={`${project.title} preview`}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 900px, 100vw"
+              />
+            </div>
           </div>
 
           <section className="mt-12 grid gap-8 laptop:grid-cols-3">

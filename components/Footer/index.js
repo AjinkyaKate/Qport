@@ -1,35 +1,61 @@
 import React from "react";
-import Socials from "../Socials";
-import Link from "next/link";
-import Button from "../Button";
+import data from "../../data/portfolio.json";
 
-const Footer = ({}) => {
+const quickLinks = [
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Features", href: "#features" },
+  { label: "Industries", href: "#industries" },
+  { label: "Contact", href: "#contact" },
+];
+
+const supportLinks = [
+  { label: "Documentation", href: "#" },
+  { label: "Help Center", href: "#" },
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms of Service", href: "#" },
+];
+
+const Footer = () => {
   return (
-    <>
-      <div className="mt-5 laptop:mt-40 p-2 laptop:p-0">
+    <footer className="mt-24 border-t border-slate-200 py-12 text-sm dark:border-slate-800" id="contact">
+      <div className="container mx-auto grid gap-10 px-4 laptop:grid-cols-3">
         <div>
-          <h1 className="text-2xl text-bold">Contact.</h1>
-          <div className="mt-10">
-            <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
-              LET&apos;S WORK
-            </h1>
-            <h1 className="text-3xl tablet:text-6xl laptop:text-6xl laptopl:text-8xl text-bold">
-              TOGETHER
-            </h1>
-            <Button type="primary">Schedule a call</Button>
-            <div className="mt-10">
-              <Socials />
-            </div>
-          </div>
+          <h2 className="text-xl font-semibold">Quick Port</h2>
+          <p className="mt-3 max-w-sm opacity-70">
+            Heavy cargo route intelligence platform helping logistics companies navigate oversized loads to remote destinations safely and efficiently.
+          </p>
+        </div>
+        <div>
+          <h3 className="text-base font-semibold">Quick Links</h3>
+          <ul className="mt-3 space-y-2 opacity-80">
+            {quickLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="link">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-base font-semibold">Support</h3>
+          <ul className="mt-3 space-y-2 opacity-80">
+            {supportLinks.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} className="link">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <h1 className="text-sm text-bold mt-2 laptop:mt-10 p-2 laptop:p-0">
-        Made With ❤ by{" "}
-        <Link href="http://www.chetanverma.com">
-          <a className="underline underline-offset-1">Chetan Verma</a>
-        </Link>
-      </h1>
-    </>
+      <div className="container mx-auto mt-10 flex flex-wrap items-center justify-between gap-4 px-4 text-xs opacity-70">
+        <span>Built for heavy cargo logistics</span>
+        <span>System operational</span>
+        <span>© 2024 Quick Port. All rights reserved.</span>
+      </div>
+    </footer>
   );
 };
 

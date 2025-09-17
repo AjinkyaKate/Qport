@@ -1,21 +1,39 @@
 import { Popover } from "@headlessui/react";
-import { useTheme } from "next-themes";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "../Button";
-// Local Data
-import data from "../../data/portfolio.json";
 
-const Header = ({ handleWorkScroll, handleAboutScroll }) => {
+const navItems = [
+  { label: "How It Works", href: "#how-it-works" },
+  { label: "Features", href: "#features" },
+  { label: "Industries", href: "#industries" },
+  { label: "Contact", href: "#contact" },
+];
+
+const Header = () => {
   const router = useRouter();
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
-  const { name, showResume } = data;
+  const handleNavClick = (href) => {
+    if (href.startsWith("#")) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+    router.push(href);
+  };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const renderNavButton = (item) => (
+    <Button
+      key={item.label}
+      classes="px-5 py-2"
+      onClick={() => handleNavClick(item.href)}
+    >
+      {item.label}
+    </Button>
+  );
 
   return (
     <>
@@ -25,109 +43,38 @@ const Header = ({ handleWorkScroll, handleAboutScroll }) => {
             <div className="flex items-center justify-between p-2 laptop:p-0">
               <h1
                 onClick={() => router.push("/")}
-                className="font-medium p-2 laptop:p-0 link"
+                className="font-semibold text-lg p-2 laptop:p-0 link"
               >
-                {name}.
+                Quick Port
               </h1>
-
-              <div className="flex items-center">
-                {data.darkMode && (
-                  <Button
-                    onClick={() =>
-                      setTheme(theme === "dark" ? "light" : "dark")
-                    }
-                  >
-                    <img
-                      className="h-6"
-                      src={`/images/${
-                        theme === "dark" ? "moon.svg" : "sun.svg"
-                      }`}
-                    ></img>
-                  </Button>
-                )}
-
-                <Popover.Button>
-                  <img
-                    className="h-5"
-                    src={`/images/${
-                      !open
-                        ? theme === "dark"
-                          ? "menu-white.svg"
-                          : "menu.svg"
-                        : theme === "light"
-                        ? "cancel.svg"
-                        : "cancel-white.svg"
-                    }`}
-                  ></img>
-                </Popover.Button>
-              </div>
+              <Popover.Button className="p-2">
+                <Image
+                  src={`/images/${open ? "cancel.svg" : "menu.svg"}`}
+                  alt="Toggle navigation"
+                  width={20}
+                  height={20}
+                />
+              </Popover.Button>
             </div>
-            <Popover.Panel
-              className={`absolute right-0 z-10 w-11/12 p-4 ${
-                theme === "dark" ? "bg-slate-800" : "bg-white"
-              } shadow-md rounded-md`}
-            >
+            <Popover.Panel className="absolute right-0 z-10 w-11/12 rounded-md bg-white p-4 shadow-md">
               <div className="grid grid-cols-1">
-                {handleWorkScroll && (
-                  <Button onClick={handleWorkScroll}>Work</Button>
-                )}
-                {handleAboutScroll && (
-                  <Button onClick={handleAboutScroll}>About</Button>
-                )}
-                {showResume && (
-                  <Button
-                    onClick={() => router.push("/resume")}
-                    classes="first:ml-1"
-                  >
-                    Resume
-                  </Button>
-                )}
-
-                <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-                  Contact
-                </Button>
-                <Button onClick={() => router.push("/admin/login")}>Admin</Button>
+                {navItems.map(renderNavButton)}
               </div>
             </Popover.Panel>
           </>
         )}
       </Popover>
-      <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${
-          theme === "light" && "bg-white"
-        } dark:text-white top-0 z-10 tablet:flex`}
-      >
-        <h1
-          onClick={() => router.push("/")}
-          className="font-medium cursor-pointer mob:p-2 laptop:p-0"
-        >
-          {name}.
-        </h1>
-        <div className="flex">
-          {handleWorkScroll && <Button onClick={handleWorkScroll}>Work</Button>}
-          {handleAboutScroll && <Button onClick={handleAboutScroll}>About</Button>}
-          {showResume && (
-            <Button
-              onClick={() => router.push("/resume")}
-              classes="first:ml-1"
-            >
-              Resume
-            </Button>
-          )}
-
-          <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
-            Contact
-          </Button>
-          <Button onClick={() => router.push("/admin/login")}>Admin</Button>
-          {mounted && theme && data.darkMode && (
-            <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              <img
-                className="h-6"
-                src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
-              ></img>
-            </Button>
-          )}
+      <div className="nav-shell hidden tablet:block">
+        <div className="nav-shell-inner">
+          <h1
+            onClick={() => router.push("/")}
+            className="font-semibold text-lg cursor-pointer"
+          >
+            Quick Port
+          </h1>
+          <div className="flex items-center gap-2">
+            {navItems.map(renderNavButton)}
+          </div>
         </div>
       </div>
     </>
