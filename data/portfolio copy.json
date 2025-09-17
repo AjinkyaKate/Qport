@@ -1,10 +1,9 @@
 {
   "name": "Chetan",
-  "headerTaglineOne": "Hello 👋",
+  "headerTaglineOne": "Hello \ud83d\udc4b",
   "headerTaglineTwo": "I'm Chetan Verma - curious",
   "headerTaglineThree": "designer and devloper",
   "headerTaglineFour": " based in New Delhi, India.",
-  "showBlog": true,
   "darkMode": true,
   "socials": [
     {
@@ -22,8 +21,11 @@
       "title": "Twitter",
       "link": "https://twitter.com/realchetanverma"
     },
-    { "id": "4", "title": "Blog", "link": "https://blog.chetanverma.com/" },
-    { "id": "5", "title": "Email", "link": "mailto:hello@chetanverma.com" }
+    {
+      "id": "4",
+      "title": "Email",
+      "link": "mailto:hello@chetanverma.com"
+    }
   ],
   "projects": [
     {
@@ -93,7 +95,7 @@
   ],
   "aboutpara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   "resume": {
-    "tagline": "👋  I'm a software engineer, product designer, and maker.",
+    "tagline": "\ud83d\udc4b  I'm a software engineer, product designer, and maker.",
     "description": "I have delivered world-class user experiences to millions of people. Well-versed with React, Javascript, and most of the Web frameworks.",
     "experiences": [
       {
@@ -111,7 +113,9 @@
         "dates": "March 2020 - March 2022",
         "type": "Full Time",
         "position": "Frontend Engineer at X",
-        "bullets": ["Worked on the frontend of a React application"]
+        "bullets": [
+          "Worked on the frontend of a React application"
+        ]
       }
     ],
     "education": {
@@ -119,8 +123,21 @@
       "universityDate": "2016-2020",
       "universityPara": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
     },
-    "languages": ["Javascript", "HTML5", "CSS", "Python"],
-    "frameworks": ["React", "Typescript", "NodeJs"],
-    "others": ["Figma", "AdobeXD", "AWS"]
+    "languages": [
+      "Javascript",
+      "HTML5",
+      "CSS",
+      "Python"
+    ],
+    "frameworks": [
+      "React",
+      "Typescript",
+      "NodeJs"
+    ],
+    "others": [
+      "Figma",
+      "AdobeXD",
+      "AWS"
+    ]
   }
 }
