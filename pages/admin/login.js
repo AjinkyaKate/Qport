@@ -51,7 +51,7 @@ const Login = () => {
       <Head>
         <title>Admin Login</title>
       </Head>
-      <Header isBlog />
+      <Header />
       <main className="flex items-center justify-center px-4">
         <form
           onSubmit={handleSubmit}

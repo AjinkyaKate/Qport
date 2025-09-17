@@ -17,7 +17,7 @@ const ProjectDetail = ({ project }) => {
         <meta name="description" content={project.summary} />
       </Head>
       <div className="container mx-auto mb-20 px-4 laptop:px-0">
-        <Header isBlog />
+        <Header />
         <article className="mt-12">
           <Link href="/" className="link text-sm opacity-60">
             ← Back to portfolio
