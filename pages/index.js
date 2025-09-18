@@ -7,6 +7,9 @@ import data from "../data/portfolio.json";
 
 const assetsBaseUrl = process.env.NEXT_PUBLIC_ASSETS_BASE_URL || "/assets";
 
+const heroPreviewImage = `${assetsBaseUrl}/screen.png`;
+const followRoutesImage = `${assetsBaseUrl}/Follow Recorded Routes.png`;
+
 const steps = [
   {
     step: "Step 1",
@@ -18,7 +21,7 @@ const steps = [
       "GPS precision initialization",
       "Heavy cargo route setup",
     ],
-    image: `${assetsBaseUrl}/recording-preview.png`,
+    image: `${assetsBaseUrl}/Start Route Recording.png`,
     imageAlt: "QPort app ready to start route recording",
   },
   {
@@ -44,7 +47,7 @@ const steps = [
       "Automatic route library storage",
       "Route metadata tagging",
     ],
-    image: `${assetsBaseUrl}/save-preview.png`,
+    image: `${assetsBaseUrl}/Save the Route.png`,
     imageAlt: "Save completed route recording",
   },
 ];
@@ -167,14 +170,17 @@ const Home = () => {
           <div className="laptop:col-span-6">
             <div className="flex justify-center">
               <div className="w-full max-w-3xl rounded-3xl border border-slate-200 bg-white p-6 shadow-lg">
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-col gap-4 tablet:flex-row tablet:items-center tablet:justify-between">
                   <div>
                     <h3 className="text-lg font-semibold">What We Solve</h3>
                     <p className="text-sm opacity-70">
                       See how QPort removes guesswork from heavy cargo logistics with reliable route intelligence.
                     </p>
                   </div>
-                  <Button onClick={() => document.getElementById("hero-video")?.scrollIntoView({ behavior: "smooth" })}>
+                  <Button
+                    classes="w-full tablet:w-auto"
+                    onClick={() => document.getElementById("hero-video")?.scrollIntoView({ behavior: "smooth" })}
+                  >
                     Watch Video
                   </Button>
                 </div>
@@ -212,20 +218,17 @@ const Home = () => {
                 <h3 className="mt-2 text-xl font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm opacity-80">{step.description}</p>
                 <div className="mt-4 flex justify-center">
-                  <div className="device-shell device-shell--card">
-                    <div className="device-shell__screen">
-                      {step.image ? (
-                        <img
-                          src={step.image}
-                          alt={step.imageAlt}
-                          className="device-shell__image"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <div className="device-shell__placeholder">Visual coming soon</div>
-                      )}
-                      <div className="device-shell__glare" aria-hidden="true"></div>
-                    </div>
+                  <div className="step-preview">
+                    {step.image ? (
+                      <img
+                        src={step.image}
+                        alt={step.imageAlt}
+                        className="step-preview__image"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="step-preview__placeholder">Visual coming soon</div>
+                    )}
                   </div>
                 </div>
                 <ul className="mt-4 space-y-1 text-sm opacity-80 text-center">
@@ -244,7 +247,14 @@ const Home = () => {
             <p className="mt-3 text-sm opacity-80">
               Navigate heavy cargo using proven routes with turn-by-turn guidance and route intelligence.
             </p>
-            <div className="mt-6 h-64 rounded-xl bg-gradient-to-br from-slate-200 to-slate-100" aria-label="Follow recorded routes"></div>
+            <div className="mt-6 follow-preview" aria-label="Follow recorded routes">
+              <img
+                src={followRoutesImage}
+                alt="Follow recorded routes mobile preview"
+                className="follow-preview__image"
+                loading="lazy"
+              />
+            </div>
           </div>
           <div className="space-y-6">
             {followFeatures.map((feature) => (
@@ -353,8 +363,9 @@ const Home = () => {
                     className="mt-1 w-full rounded-md border border-white/40 bg-transparent p-2 text-sm focus:border-white focus:outline-none"
                   />
                 </div>
-                <div className="flex justify-end gap-3 text-sm">
+                <div className="flex flex-col gap-3 text-sm tablet:flex-row tablet:justify-end">
                   <Button
+                    classes="w-full tablet:w-auto"
                     onClick={(e) => {
                       e.preventDefault();
                       e.currentTarget.closest("form")?.reset();
@@ -364,6 +375,7 @@ const Home = () => {
                   </Button>
                   <Button
                     type="primary"
+                    classes="w-full tablet:w-auto"
                     onClick={(e) => {
                       e.preventDefault();
                       window.open("mailto:hello@quickport.app", "_blank");
