@@ -45,7 +45,7 @@ const Header = () => {
                 onClick={() => router.push("/")}
                 className="font-semibold text-lg p-2 laptop:p-0 link"
               >
-                Quick Port
+                QPort
               </h1>
               <Popover.Button className="p-2">
                 <Image
@@ -70,7 +70,7 @@ const Header = () => {
             onClick={() => router.push("/")}
             className="font-semibold text-lg cursor-pointer"
           >
-            Quick Port
+            QPort
           </h1>
           <div className="flex items-center gap-2">
             {navItems.map(renderNavButton)}

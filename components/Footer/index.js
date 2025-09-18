@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className="mt-24 border-t border-slate-200 py-12 text-sm dark:border-slate-800" id="contact">
       <div className="container mx-auto grid gap-10 px-4 laptop:grid-cols-3">
         <div>
-          <h2 className="text-xl font-semibold">Quick Port</h2>
+          <h2 className="text-xl font-semibold">QPort</h2>
           <p className="mt-3 max-w-sm opacity-70">
             Heavy cargo route intelligence platform helping logistics companies navigate oversized loads to remote destinations safely and efficiently.
           </p>
@@ -53,7 +53,7 @@ const Footer = () => {
       <div className="container mx-auto mt-10 flex flex-wrap items-center justify-between gap-4 px-4 text-xs opacity-70">
         <span>Built for heavy cargo logistics</span>
         <span>System operational</span>
-        <span>© 2024 Quick Port. All rights reserved.</span>
+        <span>© 2024 QPort. All rights reserved.</span>
       </div>
     </footer>
   );

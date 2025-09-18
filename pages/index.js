@@ -5,6 +5,8 @@ import Button from "../components/Button";
 import Footer from "../components/Footer";
 import data from "../data/portfolio.json";
 
+const assetsBaseUrl = process.env.NEXT_PUBLIC_ASSETS_BASE_URL || "/assets";
+
 const steps = [
   {
     title: "Start Route Recording",
@@ -15,7 +17,8 @@ const steps = [
       "GPS precision initialization",
       "Heavy cargo route setup",
     ],
-    imageAlt: "Quick Port app ready to start route recording",
+    image: `${assetsBaseUrl}/recording-preview.png`,
+    imageAlt: "QPort app ready to start route recording",
   },
   {
     title: "Trace Drive the Route",
@@ -26,6 +29,7 @@ const steps = [
       "Automatic waypoint capture",
       "Live route visualization",
     ],
+    image: `${assetsBaseUrl}/trace-preview.png`,
     imageAlt: "Live route tracking while driving",
   },
   {
@@ -37,6 +41,7 @@ const steps = [
       "Automatic route library storage",
       "Route metadata tagging",
     ],
+    image: `${assetsBaseUrl}/save-preview.png`,
     imageAlt: "Save completed route recording",
   },
 ];
@@ -117,13 +122,40 @@ const industries = [
   },
 ];
 
+const mobileScreens = [
+  {
+    title: "Route Recording",
+    description:
+      "Initiate field-grade route capture in seconds and document every incline, turn, and checkpoint.",
+    tag: "Record",
+    image: `${assetsBaseUrl}/route-recording.png`,
+    imageAlt: "QPort route recording interface",
+  },
+  {
+    title: "Live Convoy Tracking",
+    description:
+      "Monitor active heavy-haul convoys with gradient alerts and clearance warnings in real time.",
+    tag: "Track",
+    image: `${assetsBaseUrl}/live-convoy-tracking.png`,
+    imageAlt: "QPort live tracking dashboard on mobile",
+  },
+  {
+    title: "Route Library",
+    description:
+      "Reference certified corridors complete with restrictions, escort notes, and surface conditions.",
+    tag: "Review",
+    image: `${assetsBaseUrl}/route-library.png`,
+    imageAlt: "QPort saved routes list",
+  },
+];
+
 const Home = () => {
   const storyVideoUrl = "https://www.youtube.com/embed/0hTGHbWUXuk";
 
   return (
     <div className={`relative ${data.showCursor && "cursor-none"}`}>
       <Head>
-        <title>Quick Port | Heavy Cargo Route Intelligence</title>
+        <title>QPort | Heavy Cargo Route Intelligence</title>
         <meta
           name="description"
           content="Automate heavy cargo logistics with intelligent route recording, proven route libraries, and turn-by-turn guidance."
@@ -162,7 +194,7 @@ const Home = () => {
                   <div>
                     <h3 className="text-lg font-semibold">What We Solve</h3>
                     <p className="text-sm opacity-70">
-                      See how Quick Port removes guesswork from heavy cargo logistics with reliable route intelligence.
+                      See how QPort removes guesswork from heavy cargo logistics with reliable route intelligence.
                     </p>
                   </div>
                   <Button onClick={() => window.open(storyVideoUrl, "_blank")}>
@@ -172,7 +204,7 @@ const Home = () => {
                 <div className="mt-4 aspect-video w-full overflow-hidden rounded-2xl">
                   <iframe
                     src={storyVideoUrl}
-                    title="Quick Port story video"
+                    title="QPort story video"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="h-full w-full rounded-2xl border-0"
@@ -186,7 +218,7 @@ const Home = () => {
         {/* How it works */}
         <section id="how-it-works" className="mt-24">
           <div className="text-center">
-            <h2 className="text-3xl font-semibold">How Quick Port Works</h2>
+            <h2 className="text-3xl font-semibold">How QPort Works</h2>
             <p className="mt-3 opacity-70">
               Streamlined heavy cargo route intelligence in three simple steps.
             </p>
@@ -200,12 +232,73 @@ const Home = () => {
                 <span className="text-sm font-semibold opacity-60">Step {index + 1}</span>
                 <h3 className="mt-3 text-xl font-semibold">{step.title}</h3>
                 <p className="mt-2 text-sm opacity-80">{step.description}</p>
-                <div className="mt-4 h-40 rounded-lg bg-gradient-to-br from-slate-200 to-slate-100" aria-label={step.imageAlt}></div>
+                <div className="mt-4 flex justify-center">
+                  <div className="device-shell">
+                    <div className="device-shell__screen">
+                      {step.image ? (
+                        <img
+                          src={step.image}
+                          alt={step.imageAlt}
+                          className="device-shell__image"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="device-shell__placeholder">
+                          Visual coming soon
+                        </div>
+                      )}
+                      <div className="device-shell__glare" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                </div>
                 <ul className="mt-4 space-y-1 text-sm opacity-80">
                   {step.bullets.map((bullet) => (
                     <li key={bullet}>• {bullet}</li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Mobile mission control */}
+        <section id="mobile" className="mt-24">
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">Mobile Mission Control</h2>
+            <p className="mt-3 opacity-70">
+              Give field teams the full QPort experience with recording, live tracking, and on-site approvals.
+            </p>
+          </div>
+          <div className="mt-12 grid gap-6 laptop:grid-cols-3">
+            {mobileScreens.map((screen) => (
+              <div
+                key={screen.title}
+                className="flex flex-col items-center rounded-3xl border border-slate-200 bg-white p-6 shadow-lg"
+              >
+                <span className="text-xs uppercase tracking-widest text-[#0B5CF5]">
+                  {screen.tag}
+                </span>
+                <h3 className="mt-2 text-xl font-semibold text-slate-900">{screen.title}</h3>
+                <div className="mt-6 w-full flex justify-center">
+                  <div className="device-shell">
+                    <div className="device-shell__screen">
+                      {screen.image ? (
+                        <img
+                          src={screen.image}
+                          alt={screen.imageAlt || `${screen.title} mobile screen`}
+                          className="device-shell__image"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="device-shell__placeholder">
+                          Add your mobile screen image
+                        </div>
+                      )}
+                      <div className="device-shell__glare" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-4 text-center text-sm opacity-80">{screen.description}</p>
               </div>
             ))}
           </div>
@@ -230,10 +323,10 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Why Quick Port */}
+        {/* Why QPort */}
         <section id="why" className="mt-24">
           <div className="text-center">
-            <h2 className="text-3xl font-semibold">Why Quick Port?</h2>
+            <h2 className="text-3xl font-semibold">Why QPort?</h2>
             <p className="mt-3 opacity-70">
               Purpose-built features that eliminate route uncertainty for heavy cargo logistics.
             </p>
