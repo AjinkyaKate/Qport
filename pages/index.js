@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import Cursor from "../components/Cursor";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -118,36 +117,6 @@ const industries = [
   },
 ];
 
-const mobileScreens = [
-  {
-    title: "Route Recording",
-    description:
-      "Start a new heavy cargo route with one tap and capture GPS-precise paths instantly.",
-    tag: "Record",
-    image:
-      "https://images.unsplash.com/photo-1523473827534-86c16fda8e20?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Route recording mobile screen",
-  },
-  {
-    title: "Live Tracking",
-    description:
-      "Monitor every turn, incline, and waypoint while your team drives the route in real time.",
-    tag: "Track",
-    image:
-      "https://images.unsplash.com/photo-1512427691650-1e0c6d2d6b58?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Live tracking mobile screen",
-  },
-  {
-    title: "Route Library",
-    description:
-      "Review saved routes with cargo specs, difficulty ratings, and clearance notes before deployment.",
-    tag: "Review",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80",
-    imageAlt: "Route library mobile screen",
-  },
-];
-
 const Home = () => {
   const storyVideoUrl = "https://www.youtube.com/embed/0hTGHbWUXuk";
 
@@ -211,50 +180,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Mobile Demo Screens */}
-        <section id="mobile" className="mt-24">
-          <div className="text-center">
-            <h2 className="text-3xl font-semibold">Mobile Demo Screens</h2>
-            <p className="mt-3 opacity-70">
-              Visualize the Quick Port mobile experience that keeps heavy cargo missions on track.
-            </p>
-          </div>
-          <div className="mt-12 grid gap-6 laptop:grid-cols-3">
-            {mobileScreens.map((screen) => (
-              <div
-                key={screen.title}
-                className="flex flex-col items-center rounded-3xl border border-slate-200 bg-white p-6 shadow-lg"
-              >
-                <span className="text-xs uppercase tracking-widest text-[#0B5CF5]">
-                  {screen.tag}
-                </span>
-                <h3 className="mt-2 text-xl font-semibold text-slate-900">
-                  {screen.title}
-                </h3>
-                <div className="mt-6 w-full flex justify-center">
-                  <div className="phone-screenshot">
-                    {screen.image ? (
-                      <Image
-                        src={screen.image}
-                        alt={screen.imageAlt || `${screen.title} mobile screen`}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    ) : (
-                      <div className="phone-screenshot__placeholder">
-                        Add your mobile screen image
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <p className="mt-4 text-center text-sm opacity-80">
-                  {screen.description}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
 
