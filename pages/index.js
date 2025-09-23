@@ -259,7 +259,7 @@ const Home = () => {
                 <span>Purpose-built for heavy cargo</span>
               </div>
             </div>
-            <div className="flex flex-col tablet:flex-row gap-3">
+            <div className="flex flex-col tablet:flex-row gap-3 items-center">
               <Button
                 type="primary"
                 classes="px-8 py-4 text-base font-semibold"
@@ -300,7 +300,7 @@ const Home = () => {
                       <span>Built for heavy cargo</span>
                     </div>
                   </div>
-                  <div className="flex justify-center tablet:justify-end">
+                  <div className="flex justify-center">
                     <Button
                       classes="w-full tablet:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg"
                       onClick={() => document.getElementById("hero-video")?.scrollIntoView({ behavior: "smooth" })}
