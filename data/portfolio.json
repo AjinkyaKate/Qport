@@ -1,0 +1,11 @@
+{
+  "name": "Qport",
+  "showCursor": false,
+  "socials": [
+    {"id": "1", "title": "Contact", "link": "mailto:info@quickdili.com"},
+    {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/company/quickdili-solutions/"}
+  ],
+  "projects": [],
+  "resumePdf": "",
+  "aboutText": "Intelligent route recording and following that streamlines your heavy cargo logistics — record proven paths, eliminate route failures, and achieve operational excellence."
+}
