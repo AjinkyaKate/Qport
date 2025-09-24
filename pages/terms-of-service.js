@@ -216,9 +216,9 @@ const TermsOfService = () => {
               </p>
 
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="mb-2"><strong>Email:</strong> legal@quickport.app</p>
+                <p className="mb-2"><strong>Email:</strong> info@quickdili.com</p>
                 <p className="mb-2"><strong>Mail:</strong> Qport Legal Department, 123 Technology Drive, Suite 400, San Francisco, CA 94105</p>
-                <p><strong>Phone:</strong> 1-800-Q-PORT-1</p>
+                <p><strong>Phone:</strong> +91 9673691461</p>
               </div>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">15. Severability</h2>

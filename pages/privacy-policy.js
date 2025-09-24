@@ -221,9 +221,9 @@ const PrivacyPolicy = () => {
               </p>
 
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="mb-2"><strong>Email:</strong> privacy@quickport.app</p>
+                <p className="mb-2"><strong>Email:</strong> info@quickdili.com</p>
                 <p className="mb-2"><strong>Mail:</strong> Qport Privacy Office, 123 Technology Drive, Suite 400, San Francisco, CA 94105</p>
-                <p><strong>Phone:</strong> 1-800-Q-PORT-1</p>
+                <p><strong>Phone:</strong> +91 9673691461</p>
               </div>
 
             </div>

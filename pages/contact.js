@@ -24,7 +24,7 @@ const contactMethods = [
   {
     title: "Partnerships",
     description: "Fleet management integrations, channel partnerships",
-    email: "partnerships@quickport.app",
+    email: "info@quickdili.com",
     phone: "+91 9673691461",
     hours: "Monday - Friday, 9 AM - 5 PM PST"
   }
