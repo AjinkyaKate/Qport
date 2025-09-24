@@ -302,7 +302,7 @@ const Home = () => {
                   </div>
                   <div className="flex justify-center">
                     <Button
-                      classes="w-full tablet:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg"
+                      classes="w-full tablet:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg text-center"
                       onClick={() => document.getElementById("hero-video")?.scrollIntoView({ behavior: "smooth" })}
                     >
                       <span className="text-white font-bold">Watch Demo</span>
