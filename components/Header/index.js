@@ -75,9 +75,9 @@ const Header = () => {
               <div className="flex items-center justify-between p-4">
                 <h1
                   onClick={() => router.push("/")}
-                  className="font-semibold text-lg cursor-pointer"
+                  className="font-bold text-2xl cursor-pointer tracking-tight"
                 >
-                  Qport
+                  Qport<span className="text-blue-600">.</span>
                 </h1>
                 <Popover.Button className="p-2">
                   <Image
@@ -106,9 +106,9 @@ const Header = () => {
           <div className="flex items-center justify-between py-4">
             <h1
               onClick={() => router.push("/")}
-              className="font-semibold text-lg cursor-pointer"
+              className="font-bold text-2xl cursor-pointer tracking-tight"
             >
-              Qport
+              Qport<span className="text-blue-600">.</span>
             </h1>
             <div className="flex items-center gap-2">
               {navItems.map(renderNavButton)}

@@ -290,7 +290,7 @@ const Home = () => {
               <div className="w-full max-w-3xl rounded-3xl border border-slate-200 bg-white/80 backdrop-blur-sm p-6 shadow-xl">
                 <div className="flex flex-col gap-4 tablet:flex-row tablet:items-center tablet:justify-between">
                   <div className="text-center tablet:text-left">
-                    <h3 className="text-lg font-semibold">See Qport in Action</h3>
+                    <h3 className="text-lg font-semibold">See Qport<span className="text-blue-600">.</span> in Action</h3>
                     <p className="text-sm opacity-70">
                       Watch how our GPS-precise route recording technology transforms heavy cargo navigation
                       from guesswork into reliable, repeatable operations.
@@ -332,7 +332,7 @@ const Home = () => {
         {/* How it works */}
         <section id="how-it-works" className="mt-32">
           <div className="text-center">
-            <h2 className="text-3xl font-semibold">How Qport Works</h2>
+            <h2 className="text-3xl font-semibold">How Qport<span className="text-blue-600">.</span> Works</h2>
             <p className="mt-3 opacity-70">
               Follow the three-step flow that powers dependable heavy cargo route intelligence in the field.
             </p>
@@ -371,7 +371,7 @@ const Home = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-semibold mb-4">Complete Heavy Cargo Navigation Solution</h2>
             <p className="text-lg opacity-70 max-w-3xl mx-auto">
-              From route recording to navigation execution - see how Qport transforms heavy cargo logistics with precision GPS technology and intelligent route management.
+              From route recording to navigation execution - see how Qport. transforms heavy cargo logistics with precision GPS technology and intelligent route management.
             </p>
           </div>
 
@@ -405,7 +405,7 @@ const Home = () => {
         {/* Why Qport - Enhanced Design */}
         <section id="why" className="mt-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold mb-4">Why Choose Qport?</h2>
+            <h2 className="text-3xl font-semibold mb-4">Why Choose Qport<span className="text-blue-600">.</span>?</h2>
             <p className="text-lg opacity-70 max-w-3xl mx-auto">
               Purpose-built technology that eliminates route uncertainty and transforms heavy cargo logistics from guesswork into precision operations.
             </p>
@@ -580,19 +580,20 @@ const Home = () => {
         {/* Comparison Table */}
         <section id="comparison" className="mt-32">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-semibold mb-4">Qport vs Traditional Route Planning</h2>
+            <h2 className="text-3xl font-semibold mb-4">Qport<span className="text-blue-600">.</span> vs Traditional Route Planning</h2>
             <p className="text-lg opacity-70 max-w-3xl mx-auto">
-              See how Qport's GPS-precise route recording outperforms traditional heavy cargo navigation methods.
+              See how Qport.'s GPS-precise route recording outperforms traditional heavy cargo navigation methods.
             </p>
           </div>
 
           <div className="max-w-5xl mx-auto">
-            <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-lg">
+            {/* Desktop Table View */}
+            <div className="hidden tablet:block rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-lg">
               <table className="w-full">
                 <thead>
                   <tr className="bg-slate-50">
                     <th className="py-4 px-6 text-left text-sm font-semibold text-slate-700">Feature</th>
-                    <th className="py-4 px-6 text-center text-sm font-semibold text-blue-700">Qport</th>
+                    <th className="py-4 px-6 text-center text-sm font-semibold text-blue-700">Qport.</th>
                     <th className="py-4 px-6 text-center text-sm font-semibold text-slate-700">Traditional Methods</th>
                   </tr>
                 </thead>
@@ -679,6 +680,37 @@ const Home = () => {
                 </tbody>
               </table>
             </div>
+
+            {/* Mobile Card View */}
+            <div className="tablet:hidden space-y-6">
+              {[
+                { feature: "GPS Accuracy", qport: "Centimeter-level", traditional: "Meter-level", qportGood: true },
+                { feature: "Route Recording", qport: "One-time, reusable", traditional: "Manual each time", qportGood: true },
+                { feature: "Offline Navigation", qport: "Yes", traditional: "No", qportGood: true },
+                { feature: "Route Library", qport: "Searchable database", traditional: "Paper maps", qportGood: true },
+                { feature: "Real-time Feedback", qport: "Instant sync", traditional: "Radio/phone calls", qportGood: true },
+                { feature: "Route Failures", qport: "Near zero", traditional: "Common", qportGood: true }
+              ].map((item, index) => (
+                <div key={index} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-4">{item.feature}</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start justify-between">
+                      <span className="text-sm font-medium text-blue-700">Qport.</span>
+                      <span className="flex items-center gap-1 text-sm text-green-700">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                        </svg>
+                        {item.qport}
+                      </span>
+                    </div>
+                    <div className="flex items-start justify-between">
+                      <span className="text-sm font-medium text-slate-600">Traditional</span>
+                      <span className="text-sm text-slate-600">{item.traditional}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -687,35 +719,35 @@ const Home = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl font-semibold mb-4">Frequently Asked Questions</h2>
             <p className="text-lg opacity-70 max-w-3xl mx-auto">
-              Everything you need to know about Qport's heavy cargo route intelligence platform.
+              Everything you need to know about Qport.'s heavy cargo route intelligence platform.
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-4">
             {[
               {
-                q: "How accurate is Qport's GPS tracking?",
-                a: "Qport uses centimeter-level GPS precision, providing the most accurate route recording and navigation available for heavy cargo operations. This level of accuracy ensures your drivers can confidently navigate even the most challenging routes."
+                q: "How accurate is Qport.'s GPS tracking?",
+                a: "Qport. uses centimeter-level GPS precision, providing the most accurate route recording and navigation available for heavy cargo operations. This level of accuracy ensures your drivers can confidently navigate even the most challenging routes."
               },
               {
-                q: "Can drivers use Qport in areas without cellular coverage?",
-                a: "Yes! Qport's mobile app includes offline navigation capability. Once a route is downloaded, drivers can navigate without any internet connection for up to 8 hours, making it perfect for remote delivery locations."
+                q: "Can drivers use Qport. in areas without cellular coverage?",
+                a: "Yes! Qport.'s mobile app includes offline navigation capability. Once a route is downloaded, drivers can navigate without any internet connection for up to 8 hours, making it perfect for remote delivery locations."
               },
               {
                 q: "How does route recording work?",
-                a: "Simply drive the route once while recording with Qport. The app captures every turn, waypoint, and critical detail with GPS precision. Save it to your route library, and any driver can follow the exact same path using turn-by-turn navigation."
+                a: "Simply drive the route once while recording with Qport.. The app captures every turn, waypoint, and critical detail with GPS precision. Save it to your route library, and any driver can follow the exact same path using turn-by-turn navigation."
               },
               {
-                q: "What types of cargo does Qport support?",
-                a: "Qport is purpose-built for heavy and oversized cargo including mining equipment, construction machinery, wind turbine components, oil & gas equipment, and any cargo requiring specialized routing and clearance considerations."
+                q: "What types of cargo does Qport. support?",
+                a: "Qport. is purpose-built for heavy and oversized cargo including mining equipment, construction machinery, wind turbine components, oil & gas equipment, and any cargo requiring specialized routing and clearance considerations."
               },
               {
-                q: "How long does it take to implement Qport?",
+                q: "How long does it take to implement Qport.?",
                 a: "Most companies are up and running within 1-2 weeks. Our team provides comprehensive onboarding, driver training, and technical support to ensure a smooth transition to GPS-precise route intelligence."
               },
               {
-                q: "Can Qport integrate with our existing fleet management system?",
-                a: "Yes! Qport offers API integration capabilities to connect with most major fleet management and dispatch systems. Contact our team to discuss your specific integration requirements."
+                q: "Can Qport. integrate with our existing fleet management system?",
+                a: "Yes! Qport. offers API integration capabilities to connect with most major fleet management and dispatch systems. Contact our team to discuss your specific integration requirements."
               }
             ].map((faq, index) => (
               <details key={index} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300">
@@ -746,7 +778,7 @@ const Home = () => {
               </h2>
               <p className="text-lg opacity-90">
                 Join forward-thinking logistics companies who are shaping the future of heavy cargo navigation.
-                Get early access to Qport and help us build the perfect solution.
+                Get early access to Qport. and help us build the perfect solution.
               </p>
               <div className="grid gap-3 text-sm">
                 <div className="flex items-center gap-3">

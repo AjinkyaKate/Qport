@@ -20,7 +20,7 @@ const Footer = () => {
     <footer className="mt-24 border-t border-slate-200 py-12 text-sm dark:border-slate-800" id="contact">
       <div className="container mx-auto grid gap-10 px-4 laptop:grid-cols-4">
         <div>
-          <h2 className="text-xl font-semibold">Qport</h2>
+          <h2 className="text-2xl font-bold tracking-tight">Qport<span className="text-blue-600">.</span></h2>
           <p className="mt-3 max-w-sm opacity-70">
             Heavy cargo route intelligence platform helping logistics companies navigate oversized loads to remote destinations safely and efficiently.
           </p>
