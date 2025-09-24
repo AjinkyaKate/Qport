@@ -230,7 +230,7 @@ const Home = () => {
         {/* Hero */}
         <section className="mt-20 grid gap-16 laptop:grid-cols-12 laptop:items-center min-h-[80vh] laptop:min-h-[70vh]">
           <div className="space-y-6 laptop:col-span-6">
-            <div className="flex items-center gap-4 justify-center laptop:justify-start mb-4">
+            <div className="flex items-center gap-4 justify-start mb-4">
               <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-medium text-blue-700">
                 Early Access Available
               </span>
