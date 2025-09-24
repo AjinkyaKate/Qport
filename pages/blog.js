@@ -92,6 +92,7 @@ const categories = ["All", "Best Practices", "Technology", "Case Study", "Indust
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const filteredPosts = blogPosts.filter(post => {
     const matchesCategory = selectedCategory === "All" || post.category === selectedCategory;
@@ -155,7 +156,7 @@ const Blog = () => {
                       <div className="text-xs opacity-60">{post.authorRole}</div>
                     </div>
                   </div>
-                  <Button classes="text-sm px-4 py-2">
+                  <Button classes="text-sm px-4 py-2" onClick={() => setShowComingSoon(true)}>
                     Read More →
                   </Button>
                 </div>
@@ -228,7 +229,7 @@ const Blog = () => {
                       day: 'numeric'
                     })}
                   </div>
-                  <button className="text-blue-600 hover:text-blue-700 font-medium">
+                  <button className="text-blue-600 hover:text-blue-700 font-medium" onClick={() => setShowComingSoon(true)}>
                     Read More →
                   </button>
                 </div>
@@ -290,6 +291,28 @@ const Blog = () => {
 
         <Footer />
       </div>
+
+      {/* Coming Soon Modal */}
+      {showComingSoon && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setShowComingSoon(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl" onClick={(e) => e.stopPropagation()}>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-semibold mb-3">Coming Soon</h3>
+              <p className="text-slate-600 mb-6">
+                We're working hard to bring you detailed articles and insights about heavy cargo logistics. Stay tuned!
+              </p>
+              <Button classes="w-full bg-blue-600 text-white hover:bg-blue-700" onClick={() => setShowComingSoon(false)}>
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
