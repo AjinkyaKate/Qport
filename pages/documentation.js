@@ -37,11 +37,11 @@ const documentationSections = [
         title: "Initial Setup",
         description: "First-time configuration and account setup",
         content: `
-**Account Creation:**
-1. Download Qport from App Store or Google Play
-2. Create account with business email
-3. Verify email address
-4. Complete company profile
+**Account Access:**
+1. Download Qport from Google Play Store
+2. Login with provided credentials (no account creation needed)
+3. Complete company profile setup
+4. Begin using the platform immediately
 
 **Team Setup:**
 - Add team members with role assignments
