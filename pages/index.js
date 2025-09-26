@@ -303,7 +303,7 @@ const Home = () => {
                   });
                 }}
               >
-                Book Demo
+                Book Demo Now
               </Button>
               <Button
                 classes="px-8 py-4 text-base border-2 border-slate-300 hover:border-slate-400"
