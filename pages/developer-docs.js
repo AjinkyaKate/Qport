@@ -421,7 +421,7 @@ const DeveloperDocs = () => {
                         </svg>
                       </div>
                       <h3 className="text-lg font-semibold mb-2">Driver Support</h3>
-                      <p className="text-sm opacity-80">24/7 hotline: +91 9673691461</p>
+                      <p className="text-sm opacity-80">24/7 support via email: info@quickdili.com</p>
                     </div>
                   </div>
                 </div>

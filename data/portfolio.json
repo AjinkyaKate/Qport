@@ -3,7 +3,7 @@
   "showCursor": false,
   "socials": [
     {"id": "1", "title": "Contact", "link": "mailto:info@qport.com"},
-    {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/company/qport"},
+    {"id": "2", "title": "LinkedIn", "link": "https://www.linkedin.com/company/q-port/"},
     {"id": "3", "title": "Instagram", "link": "https://www.instagram.com/qport.inmotion?igsh=aXI4eXF5cDBya3Iw&utm_source=qr", "mobileApp": true}
   ],
   "projects": [],

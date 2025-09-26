@@ -224,7 +224,6 @@ const documentationSections = [
 **Contact Support:**
 - In-app help chat
 - Email: info@quickdili.com
-- Phone: +91 9673691461
         `
       }
     ]

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cursor from "../components/Cursor";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -145,6 +145,39 @@ const Home = () => {
   const [formData, setFormData] = useState({ name: "", email: "" });
   const [formStatus, setFormStatus] = useState({ state: "idle", message: "", simulated: false });
 
+  // Handle scrolling to section when navigating from other pages or direct URL hash
+  useEffect(() => {
+    const handleHashScroll = () => {
+      const hash = window.location.hash;
+      console.log('Home page loaded with hash:', hash);
+      if (hash) {
+        // Try multiple times with increasing delays to ensure DOM is ready
+        const attempts = [500, 1000, 1500];
+        attempts.forEach((delay, index) => {
+          setTimeout(() => {
+            const el = document.querySelector(hash);
+            if (el) {
+              console.log(`Scrolling to ${hash} after ${delay}ms`);
+              el.scrollIntoView({ behavior: "smooth", block: "start" });
+            } else {
+              console.log(`Element ${hash} not found after ${delay}ms`);
+            }
+          }, delay);
+        });
+      }
+    };
+
+    // Handle hash on page load with a delay to ensure DOM is ready
+    setTimeout(handleHashScroll, 100);
+
+    // Also handle hash changes
+    window.addEventListener('hashchange', handleHashScroll);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashScroll);
+    };
+  }, []);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -248,7 +281,7 @@ const Home = () => {
             <div className="flex flex-wrap gap-6 text-sm opacity-70 mt-6">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <span>Centimeter-level accuracy</span>
+                <span>GPS precision tracking</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
@@ -270,20 +303,17 @@ const Home = () => {
                   });
                 }}
               >
-                Request Early Access
+                Book Demo
               </Button>
               <Button
                 classes="px-8 py-4 text-base border-2 border-slate-300 hover:border-slate-400"
-                onClick={() => document.querySelector("#how-it-works")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => document.querySelector("#features")?.scrollIntoView({ behavior: "smooth" })}
               >
-                See Demo
+                View Features
               </Button>
             </div>
 
             {/* Trust Indicators */}
-            <div className="text-xs opacity-60 mt-4">
-              Early access program • Join the beta • Available on iOS & Android
-            </div>
           </div>
           <div className="laptop:col-span-6">
             <div className="flex justify-center">
@@ -354,7 +384,7 @@ const Home = () => {
                       <img
                         src={step.image}
                         alt={step.imageAlt}
-                        className="step-preview__image"
+                        className={`step-preview__image ${step.step === 'Step 3' ? 'step-preview__image--step3' : ''}`}
                         loading="lazy"
                       />
                     ) : (
@@ -605,7 +635,7 @@ const Home = () => {
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                         </svg>
-                        Centimeter-level
+                        High precision
                       </span>
                     </td>
                     <td className="py-4 px-6 text-center text-sm text-slate-600">Meter-level</td>
@@ -684,7 +714,7 @@ const Home = () => {
             {/* Mobile Card View */}
             <div className="tablet:hidden space-y-6">
               {[
-                { feature: "GPS Accuracy", qport: "Centimeter-level", traditional: "Meter-level", qportGood: true },
+                { feature: "GPS Accuracy", qport: "High precision", traditional: "Meter-level", qportGood: true },
                 { feature: "Route Recording", qport: "One-time, reusable", traditional: "Manual each time", qportGood: true },
                 { feature: "Offline Navigation", qport: "Yes", traditional: "No", qportGood: true },
                 { feature: "Route Library", qport: "Searchable database", traditional: "Paper maps", qportGood: true },
@@ -836,7 +866,7 @@ const Home = () => {
                     onClick={handleSubmit}
                     disabled={formStatus.state === "loading"}
                   >
-                    {formStatus.state === "loading" ? "Submitting..." : "Request Early Access"}
+                    {formStatus.state === "loading" ? "Submitting..." : "Book Demo"}
                   </Button>
                   <Button
                     classes="w-full tablet:w-auto order-2"

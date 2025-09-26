@@ -42,12 +42,16 @@ const Header = () => {
     }
   }, [lastScrollY]);
 
-  const handleNavClick = (href) => {
+  const handleNavClick = (href, event) => {
+    console.log('handleNavClick called with:', href, 'current path:', router.pathname);
+
     if (href.startsWith("#")) {
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
+      // Prevent default behavior
+      event?.preventDefault();
+
+      // Always redirect to home page with the section hash
+      console.log('Redirecting to home page with section:', href);
+      window.location.href = `/${href}`;
       return;
     }
     router.push(href);
@@ -57,7 +61,7 @@ const Header = () => {
     <Button
       key={item.label}
       classes="px-5 py-2"
-      onClick={() => handleNavClick(item.href)}
+      onClick={(event) => handleNavClick(item.href, event)}
     >
       {item.label}
     </Button>

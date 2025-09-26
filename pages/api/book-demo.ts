@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import { appendFile } from "fs/promises";
 import { resolve } from "path";
+import { supabaseAdmin } from "../../lib/supabase";
 
 const schedulerBaseUrl = process.env.NEXT_PUBLIC_SCHEDULER_URL || "https://calendly.com/your-workspace/demo-30";
 const emailProvider = (process.env.EMAIL_PROVIDER || "sendgrid").toLowerCase();
@@ -94,6 +95,46 @@ const sendEmail = async (payload: {
   }
 };
 
+const saveDemoRequestToDatabase = async (data: {
+  name: string;
+  email: string;
+  company?: string;
+  source: string;
+  selectedTime?: string;
+}) => {
+  // Check if Supabase is configured
+  if (!supabaseAdmin) {
+    console.log('Supabase not configured, skipping database save');
+    return;
+  }
+
+  try {
+    const { error } = await supabaseAdmin
+      .from('demo_requests')
+      .insert([
+        {
+          name: data.name,
+          email: data.email,
+          company: data.company || null,
+          source: data.source,
+          selected_time: data.selectedTime || null,
+          created_at: new Date().toISOString(),
+          status: 'pending'
+        }
+      ]);
+
+    if (error) {
+      console.error('Error saving to Supabase:', error);
+      throw error;
+    }
+
+    console.log('Demo request saved to database successfully');
+  } catch (error) {
+    console.error('Failed to save demo request to database:', error);
+    // Don't throw error to prevent breaking the email flow
+  }
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -105,6 +146,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!name || !email) {
     return res.status(400).json({ error: "Name and email are required." });
   }
+
+  // Save to database first (non-blocking)
+  await saveDemoRequestToDatabase({ name, email, company, selectedTime, source });
 
   // Handle calendar booking vs simple email request
   if (selectedTime) {

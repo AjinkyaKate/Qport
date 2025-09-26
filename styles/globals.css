@@ -144,7 +144,7 @@ body {
 
 .step-preview {
   width: clamp(12rem, 60vw, 18rem);
-  aspect-ratio: 9 / 18;
+  aspect-ratio: 9 / 20;
   max-width: 100%;
   padding: clamp(0.65rem, 1.4vw, 0.95rem);
   border-radius: 32px;
@@ -163,7 +163,12 @@ body {
   height: 100%;
   border-radius: 22px;
   object-fit: cover;
+  object-position: center center;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.step-preview__image--step3 {
+  object-position: center 25%;
 }
 
 .step-preview__placeholder {
@@ -307,7 +312,7 @@ body {
 .hero-device {
   position: relative;
   width: clamp(15rem, 38vw, 23rem);
-  aspect-ratio: 9 / 19.5;
+  aspect-ratio: 9 / 21;
   padding: clamp(12px, 2vw, 18px);
   border-radius: 30px;
   background: #050a14;

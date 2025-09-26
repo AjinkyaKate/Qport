@@ -197,8 +197,8 @@ const TermsOfService = () => {
               <h2 className="text-2xl font-semibold mt-8 mb-4">12. Governing Law</h2>
 
               <p className="mb-4 opacity-80">
-                These Terms are governed by the laws of the State of California, without regard to
-                conflict of law provisions. Any disputes will be resolved in the courts of San Francisco County, California.
+                These Terms are governed by the laws of India, without regard to
+                conflict of law provisions. Any disputes will be resolved in the courts of Bangalore, Karnataka, India.
               </p>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">13. Changes to Terms</h2>
@@ -217,8 +217,7 @@ const TermsOfService = () => {
 
               <div className="bg-slate-50 p-4 rounded-lg">
                 <p className="mb-2"><strong>Email:</strong> info@quickdili.com</p>
-                <p className="mb-2"><strong>Mail:</strong> Qport Legal Department, 123 Technology Drive, Suite 400, San Francisco, CA 94105</p>
-                <p><strong>Phone:</strong> +91 9673691461</p>
+                <p className="mb-2"><strong>Mail:</strong> Qport Legal Department, Bangalore, KA, India</p>
               </div>
 
               <h2 className="text-2xl font-semibold mt-8 mb-4">15. Severability</h2>

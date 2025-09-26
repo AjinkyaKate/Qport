@@ -30,7 +30,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold mb-2">Follow Us</h4>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/company/qport"
+                href="https://www.linkedin.com/company/q-port/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"
@@ -59,7 +59,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://x.com/qport"
+                href="https://x.com/Quickdili"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 transition-colors"
@@ -102,10 +102,6 @@ const Footer = () => {
             <div>
               <strong>Email:</strong><br />
               <a href="mailto:info@quickdili.com" className="link">info@quickdili.com</a>
-            </div>
-            <div>
-              <strong>Phone:</strong><br />
-              <a href="tel:+919673691461" className="link">+91 9673691461</a>
             </div>
           </div>
         </div>

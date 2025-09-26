@@ -11,31 +11,31 @@ const contactMethods = [
     title: "Sales Inquiries",
     description: "Questions about Qport features, pricing, or implementation",
     email: "info@quickdili.com",
-    phone: "+91 9673691461",
+    phone: "",
     hours: "Monday - Friday, 8 AM - 6 PM PST"
   },
   {
     title: "Technical Support",
     description: "App issues, route sync problems, or technical assistance",
     email: "info@quickdili.com",
-    phone: "+91 9673691461",
+    phone: "",
     hours: "24/7 for Enterprise customers"
   },
   {
     title: "Partnerships",
     description: "Fleet management integrations, channel partnerships",
     email: "info@quickdili.com",
-    phone: "+91 9673691461",
+    phone: "",
     hours: "Monday - Friday, 9 AM - 5 PM PST"
   }
 ];
 
 const offices = [
   {
-    city: "San Francisco",
+    city: "Bangalore",
     type: "Headquarters",
     address: "123 Technology Drive, Suite 400",
-    city_state: "San Francisco, CA 94105",
+    city_state: "Bangalore, KA 560001",
     phone: "+1 (415) 555-0123",
     coordinates: "37.7749° N, 122.4194° W"
   },
@@ -157,9 +157,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <strong>Phone:</strong>{" "}
-                    <a href={`tel:+919673691461`} className="text-blue-600 hover:text-blue-700">
-                      +91 9673691461
-                    </a>
+                    <span className="text-slate-600">Contact via email</span>
                   </div>
                   <div className="text-xs opacity-60">
                     <strong>Hours:</strong> {method.hours}
@@ -348,8 +346,8 @@ const Contact = () => {
                 <div className="space-y-2 text-sm">
                   <div>
                     <strong>Emergency Support:</strong><br />
-                    <a href="tel:+919673691461" className="text-blue-100 hover:text-white">
-                      +91 9673691461
+                    <a href="mailto:info@quickdili.com" className="text-blue-100 hover:text-white">
+                      info@quickdili.com
                     </a>
                   </div>
                   <div>
