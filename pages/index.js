@@ -295,7 +295,7 @@ const Home = () => {
             <div className="flex flex-col tablet:flex-row gap-3 items-center">
               <Button
                 type="primary"
-                classes="px-8 py-4 text-base font-semibold"
+                classes="px-8 py-4 text-base font-semibold !bg-gradient-to-r !from-blue-600 !to-indigo-600 !text-white !shadow-xl hover:!from-blue-700 hover:!to-indigo-700 border-2 border-white/20"
                 onClick={() => {
                   document.getElementById("book-your-demo")?.scrollIntoView({
                     behavior: "smooth",
