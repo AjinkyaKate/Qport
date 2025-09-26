@@ -320,11 +320,6 @@ const Documentation = () => {
                 ))}
               </nav>
 
-              <div className="mt-8 pt-6 border-t border-slate-200">
-                <Button classes="w-full bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 text-sm">
-                  Download PDF Guide
-                </Button>
-              </div>
             </div>
           </aside>
 
