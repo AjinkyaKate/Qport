@@ -111,11 +111,11 @@ const advantages = [
 
 const industries = [
   {
-    title: "Mining Operations",
-    subtitle: "Heavy Equipment to Remote Sites",
+    title: "Energy & Utilities",
+    subtitle: "Turbine Component Transport",
     description:
-      "Navigate oversized mining equipment safely to extraction sites with intelligent route planning.",
-    stats: ["40+ ton loads", "Remote site access"],
+      "Deliver wind turbines and heavy infrastructure to renewable energy sites.",
+    stats: ["Turbine components", "Energy site access"],
   },
   {
     title: "Construction Projects",
@@ -125,11 +125,11 @@ const industries = [
     stats: ["Heavy machinery", "Job site delivery"],
   },
   {
-    title: "Energy & Utilities",
-    subtitle: "Turbine Component Transport",
+    title: "Mining Operations",
+    subtitle: "Heavy Equipment to Remote Sites",
     description:
-      "Deliver wind turbines and heavy infrastructure to renewable energy sites.",
-    stats: ["Turbine components", "Energy site access"],
+      "Navigate oversized mining equipment safely to extraction sites with intelligent route planning.",
+    stats: ["40+ ton loads", "Remote site access"],
   },
   {
     title: "Oil & Gas",
@@ -332,7 +332,7 @@ const Home = () => {
                   </div>
                   <div className="flex justify-center">
                     <Button
-                      classes="w-full tablet:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg text-center"
+                      classes="w-full tablet:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 font-semibold shadow-lg text-center flex items-center justify-center"
                       onClick={() => document.getElementById("hero-video")?.scrollIntoView({ behavior: "smooth" })}
                     >
                       <span className="text-white font-bold">Watch Demo</span>
@@ -869,7 +869,7 @@ const Home = () => {
                     {formStatus.state === "loading" ? "Submitting..." : "Book Demo"}
                   </Button>
                   <Button
-                    classes="w-full tablet:w-auto order-2"
+                    classes="w-full tablet:w-auto order-2 text-center flex items-center justify-center"
                     type="button"
                     onClick={handleReset}
                   >
